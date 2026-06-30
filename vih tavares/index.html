@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Açaí Express</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        🍇 <span>Açaí Express</span>
+    </div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Açaís</a>
+        <a href="#pagamento">Pagamento</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="carrinho">
+        🛒 <span id="contador">0</span>
+    </div>
+
+</header>
+
+<section class="banner" id="inicio">
+
+   <section class="banner" id="inicio">
+
+    <div class="texto">
+
+        <span class="tag">🔥 DELIVERY RÁPIDO</span>
+
+        <h1>
+            O Açaí mais cremoso<br>
+            da sua cidade 🍇
+        </h1>
+
+        <p>
+            Venha conhecer o melhor açai da região!!
+        </p>
+
+        <div class="botoes">
+
+            <a href="#produtos" class="botao">
+                🍇 Montar meu Açaí
+            </a>
+
+            <a href="#pagamento" class="botao-secundario">
+                
+            </a>
+
+        </div>
+
+        <div class="info">
+
+
+    </div>
+
+    <div class="imagem">
+
+        <img src="imagem/61+tGN-1MwL._AC_UF894,1000_QL80_.jpg" alt="Açaí">
+
+    </div>
+
+</section>
+
+</section>
+
+<section class="produtos" id="produtos">
+
+<h2>Escolha seu Açaí</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="imagem/1623130425e2aikefbe9.png">
+
+<h3>Açaí 300ml</h3>
+
+<p class="preço">
+R$:14,90
+</p>
+
+<button onclick="adicionarCarrinho('Açaí 300ml',14.90)">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="imagem/1336210121bjgebgbjec.jpg">
+
+<h3>Açaí 500ml</h3>
+
+<p class="preço">
+R$:25,90
+</p>
+
+<button onclick="adicionarCarrinho('Açaí 500ml',19.90)">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="imagem/857f9a5ece01583d358e4edacb1e50d5.jpg">
+
+<h3>Açaí 700ml</h3>
+
+<p class="preço">
+R$:30,90
+</p>
+
+<button onclick="adicionarCarrinho('Açaí 700ml',25.90)">
+Adicionar
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="imagem/images (2).jfif">
+
+<h3>Açaí 1 Litro</h3>
+
+<p class="preço">
+R$ 34,90
+</p>
+
+<button onclick="adicionarCarrinho('Açaí 1L',34.90)">
+Adicionar
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="adicionais">
+
+<h2>Adicionais</h2>
+
+<div class="lista">
+
+<label><input type="checkbox"> Nutella</label>
+
+<label><input type="checkbox"> Leite em Pó</label>
+
+<label><input type="checkbox"> Granola</label>
+
+<label><input type="checkbox"> Morango</label>
+
+<label><input type="checkbox"> Banana</label>
+
+<label><input type="checkbox"> Paçoca</label>
+
+<label><input type="checkbox"> Oreo</label>
+
+<label><input type="checkbox"> Confete</label>
+
+<label><input type="checkbox"> Leite Condensado</label>
+
+<label><input type="checkbox"> Kiwi</label>
+
+</div>
+
+</section>
+
+<section id="pagamento">
+
+<h2>Forma de Pagamento</h2>
+
+<div class="pagamentos">
+
+<label>
+
+<input type="radio" name="pagamento">
+
+PIX
+
+</label>
+
+<label>
+
+<input type="radio" name="pagamento">
+
+Cartão de Crédito
+
+</label>
+
+<label>
+
+<input type="radio" name="pagamento">
+
+Cartão de Débito
+
+</label>
+
+<label>
+
+<input type="radio" name="pagamento">
+
+Dinheiro
+
+</label>
+
+</div>
+
+<button class="finalizar">
+Finalizar Pedido
+</button>
+
+</section>
+
+<section id="contato">
+
+<h2>Contato</h2>
+
+<p>📞 (11) 99999-9999</p>
+
+<p>📍 Rua das Palmeiras, 123</p>
+
+<p>⏰ Aberto das 13h às 23h</p>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Açaí Express - Todos os direitos reservados.
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

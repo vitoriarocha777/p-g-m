@@ -1,0 +1,22 @@
+{
+    "acai_300ml": {
+        "nome": "Açaí 300ml",
+        "preco": 14.90,
+        "estoque": 20
+    },
+    "acai_500ml": {
+        "nome": "Açaí 500ml",
+        "preco": 19.90,
+        "estoque": 15
+    },
+    "acai_700ml": {
+        "nome": "Açaí 700ml",
+        "preco": 25.90,
+        "estoque": 10
+    },
+    "acai_1l": {
+        "nome": "Açaí 1 Litro",
+        "preco": 34.90,
+        "estoque": 8
+    }
+}
