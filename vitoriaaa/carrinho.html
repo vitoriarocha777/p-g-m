@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Açaí Delícia</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <h1>🍇 Açaí Delícia</h1>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html#inicio">Início</a></li>
+            <li><a href="index.html#cardapio">Cardápio</a></li>
+            <li><a href="index.html#estoque">Estoque</a></li>
+            <li><a href="index.html#pagamento">Pagamento</a></li>
+            <li><a href="index.html#cadastro">Cadastro</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="carrinho-page">
+    <h2 class="titulo">Seu Carrinho</h2>
+
+    <div class="carrinho-layout">
+        <div class="carrinho-card">
+            <div class="carrinho-itens" id="carrinhoItens"></div>
+
+            <div class="carrinho-footer">
+                <div class="carrinho-total">
+                    <span>Total:</span>
+                    <strong id="carrinhoTotal">R$ 0,00</strong>
+                </div>
+
+                <a id="botaoFinalizar" class="btn-primario" href="index.html#pagamento" style="text-decoration:none; display:block; text-align:center;">Finalizar Pedido</a>
+            </div>
+        </div>
+
+        <div class="carrinho-acoes">
+            <button id="btnLimparCarrinho" class="btn-secundario" type="button">Limpar Carrinho</button>
+            <p class="carrinho-ajuda">Carrinho salvo no seu navegador (localStorage).</p>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+<script>
+    // render do carrinho feito no script.js (se existir)
+    if (typeof window.renderCarrinho === 'function') {
+        window.renderCarrinho();
+    }
+</script>
+
+</body>
+</html>
+
