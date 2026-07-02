@@ -1,72 +1,143 @@
-// Carrinho
+// ==============================
+// CARRINHO DE COMPRAS
+// ==============================
+
 let carrinho = [];
 let total = 0;
 
-// Adicionar produto ao carrinho
-function adicionarCarrinho(nome, preco) {
+// ==============================
+// ADICIONAR NO CARRINHO
+// ==============================
 
-    carrinho.push({
-        nome: nome,
-        preco: preco
-    });
+function adicionarCarrinho(nome, preco){
 
+    carrinho.push({nome, preco});
     total += preco;
 
-    document.getElementById("contador").innerText = carrinho.length;
-
-    alert(nome + " adicionado ao carrinho!");
+    atualizarCarrinho();
 }
 
-// Botão Finalizar Pedido
-const botao = document.querySelector(".finalizar");
+// ==============================
+// ATUALIZAR CARRINHO NA TELA
+// ==============================
 
-botao.addEventListener("click", finalizarPedido);
+function atualizarCarrinho(){
 
-function finalizarPedido() {
+    let lista = document.getElementById("listaCarrinho");
 
-    if (carrinho.length === 0) {
+    lista.innerHTML = "";
+
+    carrinho.forEach((item, index) => {
+
+        lista.innerHTML += `
+            <p>
+                ${item.nome} - R$ ${item.preco.toFixed(2)}
+                <button onclick="removerItem(${index})">❌</button>
+            </p>
+        `;
+    });
+
+    document.getElementById("total").innerText = total.toFixed(2);
+}
+
+// ==============================
+// REMOVER ITEM DO CARRINHO
+// ==============================
+
+function removerItem(index){
+
+    total -= carrinho[index].preco;
+    carrinho.splice(index, 1);
+
+    atualizarCarrinho();
+}
+
+// ==============================
+// FINALIZAR COMPRA
+// ==============================
+
+function finalizarCompra(){
+
+    if(carrinho.length === 0){
         alert("Seu carrinho está vazio!");
         return;
     }
 
-    let pagamento = document.querySelector("input[name='pagamento']:checked");
+    let pagamento = prompt(
+`Escolha a forma de pagamento:
+1 - PIX
+2 - Cartão de Crédito
+3 - Cartão de Débito
+4 - Dinheiro`
+    );
 
-    if (!pagamento) {
-        alert("Escolha uma forma de pagamento.");
+    let forma = "";
+
+    if(pagamento == "1") forma = "PIX";
+    else if(pagamento == "2") forma = "Cartão de Crédito";
+    else if(pagamento == "3") forma = "Cartão de Débito";
+    else if(pagamento == "4") forma = "Dinheiro";
+    else{
+        alert("Forma de pagamento inválida!");
         return;
     }
 
-    let lista = "";
+    alert(
+        `✅ Pedido realizado com sucesso!\n` +
+        `💰 Total: R$ ${total.toFixed(2)}\n` +
+        `💳 Pagamento: ${forma}`
+    );
 
-    carrinho.forEach(function(produto){
-
-        lista += produto.nome + " - R$ " + produto.preco.toFixed(2) + "\n";
-
-    });
-
-    let mensagem =
-`========== PEDIDO ==========
-${lista}
-
-----------------------------
-Total: R$ ${total.toFixed(2)}
-
-Pagamento:
-${pagamento.parentElement.innerText}
-
-Obrigado pela preferência!
-`;
-
-    alert(mensagem);
-
+    // Limpa carrinho
     carrinho = [];
     total = 0;
-
-    document.getElementById("contador").innerText = "0";
-
-    document.querySelectorAll("input[type=checkbox]").forEach(item=>{
-        item.checked=false;
-    });
-
-    pagamento.checked=false;
+    atualizarCarrinho();
 }
+
+// ==============================
+// ESTOQUE SIMPLES
+// ==============================
+
+let estoque = {
+    acai: 120,
+    morango: 25,
+    banana: 80,
+    oreo: 35,
+    nutella: 22
+};
+
+// ==============================
+// ATUALIZAR ESTOQUE NA TELA
+// ==============================
+
+function atualizarEstoque(){
+
+    for(let item in estoque){
+
+        let el = document.getElementById(item);
+
+        if(el){
+            el.innerText = estoque[item];
+        }
+    }
+}
+
+// ==============================
+// REDUZ ESTOQUE AO COMPRAR
+// ==============================
+
+function reduzirEstoque(produto){
+
+    if(estoque[produto] > 0){
+        estoque[produto]--;
+        atualizarEstoque();
+    }else{
+        alert("Estoque esgotado de " + produto);
+    }
+}
+
+// ==============================
+// INICIALIZA
+// ==============================
+
+atualizarEstoque();
