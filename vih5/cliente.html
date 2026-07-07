@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Área do Cliente</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+.perfil{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+
+.perfil h2{
+    color:#6a1b9a;
+    margin-bottom:20px;
+}
+
+.info{
+    margin:15px 0;
+    font-size:18px;
+}
+
+.info strong{
+    color:#6a1b9a;
+}
+
+#pedidos{
+    margin-top:30px;
+}
+
+.pedido{
+    background:#f5f5f5;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.botoes{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.botoes button{
+
+    background:#6a1b9a;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+.botoes button:hover{
+
+    background:#7CFC00;
+    color:#000;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-bowl-food"></i>
+
+<h2>Império do Açaí</h2>
+
+</div>
+
+<nav>
+
+<a href="index.html">Início</a>
+
+<a href="index.html#produtos">Cardápio</a>
+
+<a href="index.html#contato">Contato</a>
+
+</nav>
+
+</header>
+
+<div class="perfil">
+
+<h2>Minha Conta</h2>
+
+<div class="info">
+
+<strong>Nome:</strong>
+
+<span id="nome"></span>
+
+</div>
+
+<div class="info">
+
+<strong>Telefone:</strong>
+
+<span id="telefone"></span>
+
+</div>
+
+<div class="info">
+
+<strong>Endereço:</strong>
+
+<span id="endereco"></span>
+
+</div>
+
+<div class="info">
+
+<strong>E-mail:</strong>
+
+<span id="email"></span>
+
+</div>
+
+<h2>Meus Pedidos</h2>
+
+<div id="pedidos">
+
+<p>Nenhum pedido encontrado.</p>
+
+</div>
+
+<div class="botoes">
+
+<button onclick="window.location='index.html'">
+
+Fazer Novo Pedido
+
+</button>
+
+<button onclick="sair()">
+
+Sair
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+
+let cliente = JSON.parse(localStorage.getItem("cliente"));
+
+if(cliente){
+
+document.getElementById("nome").textContent=cliente.nome;
+
+document.getElementById("telefone").textContent=cliente.telefone;
+
+document.getElementById("endereco").textContent=cliente.endereco;
+
+document.getElementById("email").textContent=cliente.email;
+
+}else{
+
+alert("Faça login primeiro.");
+
+window.location="login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

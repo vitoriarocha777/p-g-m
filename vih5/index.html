@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Império do Açaí</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-bowl-food"></i>
+            <h2>Império do Açaí</h2>
+        </div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Açaís</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="login.html" class="btn-login">
+                <i class="fa-solid fa-user"></i> Entrar
+            </a>
+        </nav>
+
+        <div class="carrinho">
+            <button id="btnCarrinho">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Carrinho (<span id="contador">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner" id="inicio">
+        <div class="banner-texto">
+            <h1>O Melhor Açaí da Cidade!</h1>
+            <p>
+                Monte seu açaí do jeito que quiser e receba em casa.
+            </p>
+
+            <a href="#produtos" class="btn">
+                Ver Cardápio
+            </a>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section id="produtos">
+
+        <h2 class="titulo">Nosso Cardápio</h2>
+
+        <div class="produtos">
+
+            <div class="produto">
+                <img src="imagem/661fe8b591d34qveis.webp" alt="Açaí 300ml">
+
+                <h3>Açaí 300ml</h3>
+
+                <p>
+                    Banana, granola e leite condensado.
+                </p>
+
+                <span class="preco">R$ 15,00</span>
+
+                <button onclick="adicionarCarrinho('Açaí 300ml',15)">
+                    Adicionar
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="imagem/857f9a5ece01583d358e4edacb1e50d5.jpg" alt="Açaí 500ml">
+
+                <h3>Açaí 500ml</h3>
+
+                <p>
+                    Até 4 complementos.
+                </p>
+
+                <span class="preco">R$ 22,00</span>
+
+                <button onclick="adicionarCarrinho('Açaí 500ml',22)">
+                    Adicionar
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="imagem/images (1).jfif" alt="Açaí 700ml">
+
+                <h3>Açaí 700ml</h3>
+
+                <p>
+                    Até 5 complementos.
+                </p>
+
+                <span class="preco">R$ 30,00</span>
+
+                <button onclick="adicionarCarrinho('Açaí 700ml',30)">
+                    Adicionar
+                </button>
+            </div>
+
+<div class="produto">
+                <img src="imagem/images (3).jfif" alt="Marmite M">
+
+                <h3>Marmita M</h3>
+
+                <p>
+                    Até 4 complementos.
+                </p>
+
+                <span class="preco">R$ 30,00</span>
+
+                <button onclick="adicionarCarrinho('Açaí 700ml',30)">
+                    Adicionar
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+
+        <h2>Sobre Nós</h2>
+
+        <p>
+            Trabalhamos com ingredientes selecionados para oferecer o
+            melhor açaí da cidade. Faça seu pedido online e receba em
+            poucos minutos.
+        </p>
+
+    </section>
+
+    <!-- Carrinho -->
+    <section class="painel-carrinho" id="painelCarrinho">
+
+        <h2>Seu Carrinho</h2>
+
+        <div id="listaCarrinho">
+
+            <p>Seu carrinho está vazio.</p>
+
+        </div>
+
+        <h3 id="total">
+            Total: R$ 0,00
+        </h3>
+
+        <button id="btnFinalizar">
+            Finalizar Pedido
+        </button>
+
+    </section>
+
+    <!-- Pagamento (INFO + Modal funcional) -->
+    <section id="pagamento">
+
+        <h2>Forma de Pagamento</h2>
+
+        <div class="formas">
+
+            <div class="forma">
+                <i class="fa-solid fa-qrcode"></i>
+
+                <h3>PIX</h3>
+
+                <p>
+                    Pague utilizando QR Code.
+                </p>
+            </div>
+
+            <div class="forma">
+                <i class="fa-solid fa-credit-card"></i>
+
+                <h3>Cartão</h3>
+
+                <p>
+                    Crédito ou Débito.
+                </p>
+            </div>
+
+        </div>
+
+        <p style="text-align:center;margin-top:25px;opacity:.85;">
+            <strong>Demo:</strong> o pedido só será confirmado após clicar em “Confirmar Pagamento”.
+        </p>
+
+    </section>
+
+    <!-- Modal Pagamento -->
+    <div id="modalPagamento" class="modal" aria-hidden="true">
+        <div class="modal-conteudo">
+            <div class="modal-header">
+                <h2>Pagamento</h2>
+                <button class="modal-fechar" type="button" onclick="fecharModalPagamento()" aria-label="Fechar">✕</button>
+            </div>
+
+            <div id="modalCorpo" class="modal-body">
+                <div class="modal-secao">
+                    <h3>Escolha o método</h3>
+                    <div class="modal-metodos">
+                        <button type="button" class="metodo" onclick="selecionarMetodo('pix')" id="btnMetodoPix">
+                            <i class="fa-solid fa-qrcode"></i>
+                            PIX
+                        </button>
+                        <button type="button" class="metodo" onclick="selecionarMetodo('cartao')" id="btnMetodoCartao">
+                            <i class="fa-solid fa-credit-card"></i>
+                            Cartão
+                        </button>
+                    </div>
+                </div>
+
+                <div id="painelPix" class="modal-secao" style="display:none;">
+                    <h3>PIX (simulado)</h3>
+                    <p>Copie o código abaixo e conclua o pagamento no seu app.</p>
+
+                    <div class="pix-qr">
+                        <div class="pix-mock-qr">QR</div>
+                        <div class="pix-dados">
+                            <p class="pix-total"><strong id="pixTotal">Total:</strong></p>
+                            <p class="pix-linha">Linha PIX:</p>
+                            <input id="pixCodigo" type="text" readonly />
+                            <div class="pix-botoes">
+                                <button type="button" onclick="copiarPix()">Copiar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="confirmar" onclick="confirmarPagamento()">
+                        Confirmar Pagamento
+                    </button>
+                </div>
+
+                <div id="painelCartao" class="modal-secao" style="display:none;">
+                    <h3>Cartão (simulado)</h3>
+                    <p>Preencha (opcional) e confirme para concluir o pedido.</p>
+
+                    <div class="cartao-campos">
+                        <input type="text" id="cartaoNumero" placeholder="Número do cartão (opcional)" />
+                        <div class="cartao-duo">
+                            <input type="text" id="cartaoValidade" placeholder="Validade (opcional)" />
+                            <input type="text" id="cartaoCvv" placeholder="CVV (opcional)" />
+                        </div>
+                    </div>
+
+                    <button type="button" class="confirmar" onclick="confirmarPagamento()">
+                        Confirmar Pagamento
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contato -->
+    <footer id="contato">
+
+        <h2>Império do Açaí</h2>
+
+        <p>
+            📍 Rua centro, 123
+        </p>
+
+        <p>
+            📞 (45) 99999-9999
+        </p>
+
+        <p>
+          
+        </p>
+
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
