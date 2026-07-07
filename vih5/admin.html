@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel Administrativo</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+body{
+    background:#f4f4f4;
+}
+
+.admin{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.admin h2{
+    color:#6a1b9a;
+    margin-bottom:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    background:#6a1b9a;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#7CFC00;
+    color:#000;
+}
+
+.produto{
+    margin-top:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+}
+
+.produto img{
+    width:180px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-bowl-food"></i>
+
+<h2>Administrador</h2>
+
+</div>
+
+</header>
+
+<div class="admin">
+
+<h2>Cadastrar Novo Açaí</h2>
+
+<input type="text" id="nome" placeholder="Nome do produto">
+
+<textarea id="descricao" placeholder="Descrição"></textarea>
+
+<input type="number" id="preco" placeholder="Preço">
+
+<input type="file" id="imagem" accept="image/*">
+
+<button onclick="salvarProduto()">
+
+Salvar Produto
+
+</button>
+
+<hr>
+
+<h2>Produtos Cadastrados</h2>
+
+<div id="listaProdutos"></div>
+
+</div>
+
+<script>
+
+function salvarProduto(){
+
+let nome=document.getElementById("nome").value;
+
+let descricao=document.getElementById("descricao").value;
+
+let preco=document.getElementById("preco").value;
+
+let arquivo=document.getElementById("imagem").files[0];
+
+if(nome==""||descricao==""||preco==""||!arquivo){
+
+alert("Preencha todos os campos.");
+
+return;
+
+}
+
+let leitor=new FileReader();
+
+leitor.onload=function(e){
+
+let imagem=e.target.result;
+
+let produtos=JSON.parse(localStorage.getItem("produtos"))||[];
+
+produtos.push({
+
+nome:nome,
+
+descricao:descricao,
+
+preco:preco,
+
+imagem:imagem
+
+});
+
+localStorage.setItem("produtos",JSON.stringify(produtos));
+
+alert("Produto cadastrado!");
+
+document.getElementById("nome").value="";
+
+document.getElementById("descricao").value="";
+
+document.getElementById("preco").value="";
+
+document.getElementById("imagem").value="";
+
+listarProdutos();
+
+};
+
+leitor.readAsDataURL(arquivo);
+
+}
+
+function listarProdutos(){
+
+let lista=document.getElementById("listaProdutos");
+
+let produtos=JSON.parse(localStorage.getItem("produtos"))||[];
+
+lista.innerHTML="";
+
+if(produtos.length==0){
+
+lista.innerHTML="<p>Nenhum produto cadastrado.</p>";
+
+return;
+
+}
+
+produtos.forEach((produto,index)=>{
+
+lista.innerHTML+=`
+
+<div class="produto">
+
+<h3>${produto.nome}</h3>
+
+<p>${produto.descricao}</p>
+
+<p><strong>R$ ${Number(produto.preco).toFixed(2)}</strong></p>
+
+<img src="${produto.imagem}">
+
+<br><br>
+
+<button onclick="excluir(${index})">
+
+Excluir
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function excluir(index){
+
+let produtos=JSON.parse(localStorage.getItem("produtos"))||[];
+
+produtos.splice(index,1);
+
+localStorage.setItem("produtos",JSON.stringify(produtos));
+
+listarProdutos();
+
+}
+
+listarProdutos();
+
+</script>
+
+</body>
+
+</html>
