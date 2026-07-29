@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Açaí Premium - Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN / CADASTRO OBRIGATÓRIO -->
+    <div id="login-screen" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Bem-vindo ao Açaí Premium! 🍧</h2>
+            <p>Faça seu cadastro rápido para iniciar o pedido.</p>
+            <form id="login-form">
+                <input type="text" id="user-name" placeholder="Nome Completo" required>
+                <input type="email" id="user-email" placeholder="E-mail" required>
+                <input type="password" id="user-password" placeholder="Senha" required>
+                <input type="tel" id="user-phone" placeholder="Número de Telefone (WhatsApp)" required>
+                <input type="text" id="user-address" placeholder="Endereço de Entrega Completo" required>
+                <button type="submit" class="btn-main">Entrar e Pedir</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOPO DO SITE -->
+    <header>
+        <div class="header-container">
+            <h1>🍧 Açaí Premium</h1>
+            <nav>
+                <a href="#categoria-copos">Copos</a>
+                <a href="#categoria-marmitas">Marmitas</a>
+                <a href="#categoria-garrafas">Garrafas</a>
+                <button id="btn-admin-login" class="btn-nav">Painel Interno 🔒</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <!-- SEÇÃO DE PRODUTOS -->
+        <section class="products-section">
+            
+            <!-- CATEGORIA: COPOS -->
+            <h2 id="categoria-copos" class="section-title">Açaí no Copo</h2>
+            <div class="grid-products">
+                <div class="product-card" data-id="copo-300" data-nome="Açaí no Copo 300ml" data-preco="12.00">
+                    <img src="imagem/shutterstock_1237796125 (1).jpg" alt="Açaí 300ml" class="product-img">
+                    <h3>Açaí 300ml</h3>
+                    <p class="price">R$ 12,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+                <div class="product-card" data-id="copo-400" data-nome="Açaí no Copo 400ml" data-preco="15.00">
+                    <img src="imagem/images (7).jfif" alt="Açaí 400ml" class="product-img">
+                    <h3>Açaí 400ml</h3>
+                    <p class="price">R$ 15,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+                <div class="product-card" data-id="copo-500" data-nome="Açaí no Copo 500ml" data-preco="18.00">
+                    <img src="imagem/172184713166a14d5b28515.jpeg" alt="Açaí 500ml" class="product-img">
+                    <h3>Açaí 500ml</h3>
+                    <p class="price">R$ 18,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- CATEGORIA: MARMITAS -->
+            <h2 id="categoria-marmitas" class="section-title">Marmitas de Açaí</h2>
+            <div class="grid-products">
+                <div class="product-card" data-id="marmita-700" data-nome="Marmita de Açaí 700ml" data-preco="25.00">
+                    <img src="imagem/images (2).jfif" alt="Marmita Açaí" class="product-img">
+                    <h3>Marmita Big 700ml</h3>
+                    <p class="price">R$ 25,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+                <div class="product-card" data-id="marmita-1000" data-nome="Marmita de Açaí 1L" data-preco="32.00">
+                    <img src="imagem/acai-500ml-267191.jpg" alt="Marmita Açaí 1L" class="product-img">
+                    <h3>Marmita Monstra 1 Litro</h3>
+                    <p class="price">R$ 32,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- CATEGORIA: GARRAFAS -->
+            <h2 id="categoria-garrafas" class="section-title">Açaí na Garrafa (Suco/Shake)</h2>
+            <div class="grid-products">
+                <div class="product-card" data-id="garrafa-500" data-nome="Garrafa de Açaí 500ml" data-preco="14.00">
+                    <img src="imagem/63a11263c6c3c451gk.webp" alt="Garrafa Açaí" class="product-img">
+                    <h3>Garrafa 500ml</h3>
+                    <p class="price">R$ 14,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+                <div class="product-card" data-id="garrafa-1000" data-nome="Garrafa de Açaí 1L" data-preco="24.00">
+                    <img src="imagem/suco_pomar_garrafa_500ml_a_a__5cd2c211-94e1-441d-886a-c7648e2e2df1.png" alt="Garrafa Açaí 1L" class="product-img">
+                    <h3>Garrafa 1 Litro</h3>
+                    <p class="price">R$ 24,00</p>
+                    <button class="btn-add">Adicionar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARRINHO DE COMPRAS INTERATIVO -->
+        <aside class="cart-aside">
+            <h2>Seu Pedido</h2>
+            <div id="cart-items">
+                <p class="empty-cart">O carrinho está vazio.</p>
+            </div>
+            <div class="cart-summary">
+                <p><strong>Total:</strong> <span id="cart-total">R$ 0,00</span></p>
+                
+                <label for="payment-method">Forma de Pagamento:</label>
+                <select id="payment-method">
+                    <option value="Pix">Pix</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                </select>
+
+                <button id="btn-checkout" class="btn-main">Finalizar Pedido</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- MODAL DE ESTOQUE (PROIBIDO PARA CLIENTES) -->
+    <div id="admin-screen" class="modal-overlay" style="display: none;">
+        <div class="modal-content admin-content">
+            <span class="close-modal" id="close-admin">&times;</span>
+            <h2>📊 Controle de Estoque (Restrito)</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade Atual</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stock-table-body">
+                        <!-- Gerado via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
